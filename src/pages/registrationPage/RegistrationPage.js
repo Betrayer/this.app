@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import firebase from "../../config";
 import { withRouter } from "react-router-dom";
 
-class LoginPage extends Component {
+class SignInPage extends Component {
   state = {
     message: null,
     email: "",
     password: ""
   };
 
+  //   componentDidMount() {
+  //   console.log("user created");
+  //   this.createUser("test@test.com", "qwerty");
+  // }
+
   createUser = async (email, password) => {
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
     } catch (error) {
       this.setState({ message: error.message });
     }
@@ -33,9 +38,8 @@ class LoginPage extends Component {
     const { message } = this.state;
     return (
       <div>
-        <h2>this is login page</h2>
-
-        {message ? <h2>{message}</h2> : <h2>Welcome back!</h2>}
+        <h2>this is register page</h2>
+        {message ? <h2>{message}</h2> : <h2>Greetings, new user!</h2>}
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="email"
@@ -49,18 +53,12 @@ class LoginPage extends Component {
             type="password"
             onChange={this.handleChange}
           ></input>
-          <button type="submit">Login</button>
+          <button type="submit">Submit</button>
         </form>
-        <button
-          onClick={() => {
-            this.props.history.push("/registration");
-          }}
-        >
-          Registration
-        </button>
+        <button onClick={() => this.props.history.push("/login")}>Login</button>
       </div>
     );
   }
 }
 
-export default withRouter(LoginPage);
+export default withRouter(SignInPage);
