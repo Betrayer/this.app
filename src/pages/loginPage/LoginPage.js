@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../../config";
 import { withRouter } from "react-router-dom";
-import css from './loginPage.module.css'
+import css from "./loginPage.module.css";
 
 class LoginPage extends Component {
   state = {
@@ -28,6 +28,7 @@ class LoginPage extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     this.createUser(email, password);
+    this.props.history.push("/home");
   };
 
   render() {

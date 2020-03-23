@@ -19,11 +19,12 @@ class App extends Component {
 
   signOut = () => {
     firebase.auth().signOut();
+    this.props.history.push("/login");
   };
 
   render() {
     const { userStatus } = this.state;
-    const routing = useRouter(false);
+    const routing = useRouter(userStatus);
     return (
       <div className={css.signOutContainer}>
         {userStatus && (

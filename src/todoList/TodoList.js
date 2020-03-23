@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
+
 import axios from "axios";
 
 class TodoList extends Component {
@@ -81,4 +83,4 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+export default withRouter(TodoList);

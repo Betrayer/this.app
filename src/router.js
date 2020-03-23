@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
-// import TodoList from "./todoList/TodoList";
+// import TodoList from './todoList/TodoList'
 
 const LazyLogin = lazy(() =>
   import("./pages/loginPage/LoginPage" /* webpackChunkName: 'Login' */)
@@ -17,15 +17,13 @@ export const useRouter = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route exact path="/home" >
-          <HomePage />
-        </Route>
-        {/* <Route path="/home/todo">
+        <Route exact path="/home" component={HomePage} />
+        {/* <Route exact path="/home/todo">
             <>
               <TodoList />
             </>
-          </Route> */}
-        <Redirect to="/home" />
+          </Route>
+        <Redirect to="/home" /> */}
       </Switch>
     );
   }
@@ -34,13 +32,9 @@ export const useRouter = isAuthenticated => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route path="/login">
-            <LazyLogin />
-          </Route>
-          <Route path="/registration">
-            <LazyRegistration />
-          </Route>
-          <Redirect to="/login" />
+          <Route path="/login" component={LazyLogin} />
+          <Route path="/registration" component={LazyRegistration} />
+          {/* <Redirect to="/login" /> */}
         </Switch>
       </Suspense>
     </>
