@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../../config";
 import { withRouter } from "react-router-dom";
+import css from './registrationPage.module.css'
 
 class SignInPage extends Component {
   state = {
@@ -37,10 +38,10 @@ class SignInPage extends Component {
   render() {
     const { message } = this.state;
     return (
-      <div>
+      <div className={css.registrationPageContainer}>
         <h2>this is register page</h2>
         {message ? <h2>{message}</h2> : <h2>Greetings, new user!</h2>}
-        <form onSubmit={this.handleSubmit}>
+        <form className={css.registrationForm} onSubmit={this.handleSubmit}>
           <input
             placeholder="email"
             name="email"

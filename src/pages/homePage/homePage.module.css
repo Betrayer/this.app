@@ -1,0 +1,16 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.homePageContainer {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(138, 232, 188);
+  background: linear-gradient(
+    90deg,
+    rgba(138, 232, 188, 1) 35%,
+    rgba(198, 245, 255, 1) 100%
+  );
+}

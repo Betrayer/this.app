@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import css from './homePage.module.css'
 
 class HomePage extends Component {
   state = {
@@ -6,7 +8,7 @@ class HomePage extends Component {
   };
   render() {
     return (
-      <>
+      <div className={css.homePageContainer}>
         <h2>this is homepage</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo,
@@ -28,9 +30,9 @@ class HomePage extends Component {
           modi temporibus molestiae et numquam tempore. Inventore cum eos
           veritatis neque fuga ipsam rerum!
         </p>
-      </>
+      </div>
     );
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

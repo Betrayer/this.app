@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "./config";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useRouter } from "./router";
+import css from "./app.module.css";
 
 class App extends Component {
   state = { userStatus: null };
@@ -24,34 +25,16 @@ class App extends Component {
     const { userStatus } = this.state;
     const routing = useRouter(false);
     return (
-      <>
+      <div className={css.signOutContainer}>
         {userStatus && (
-          <button onClick={this.signOut}>
+          <button className={css.signOut} onClick={this.signOut}>
             Sign out from {userStatus.email}
           </button>
         )}
         <Router>{routing}</Router>
-      </>
+      </div>
     );
   }
 }
-
-// const App = () => (
-//   <>
-//     <Switch>
-//       <Route exact path="/" component={LoginPage} />
-
-//       <Route path="/signIn" component={RegistrationPage} />
-//       <Redirect to="/" />
-//     </Switch>
-//     <NavLink exact to="/">
-//       Login
-//     </NavLink>
-//     <span> -=-=-=-=-=-=-=-=- </span>
-//     <NavLink to="/signIn">Registration page</NavLink>
-
-//     {/* <TodoList /> */}
-//   </>
-// );
 
 export default App;

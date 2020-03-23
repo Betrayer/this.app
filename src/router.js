@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
-import TodoList from "./todoList/TodoList";
+// import TodoList from "./todoList/TodoList";
 
 const LazyLogin = lazy(() =>
   import("./pages/loginPage/LoginPage" /* webpackChunkName: 'Login' */)
@@ -17,7 +17,7 @@ export const useRouter = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/home" >
           <HomePage />
         </Route>
         {/* <Route path="/home/todo">

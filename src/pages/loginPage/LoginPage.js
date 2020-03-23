@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../../config";
 import { withRouter } from "react-router-dom";
+import css from './loginPage.module.css'
 
 class LoginPage extends Component {
   state = {
@@ -32,11 +33,11 @@ class LoginPage extends Component {
   render() {
     const { message } = this.state;
     return (
-      <div>
+      <div className={css.loginPageContainer}>
         <h2>this is login page</h2>
 
         {message ? <h2>{message}</h2> : <h2>Welcome back!</h2>}
-        <form onSubmit={this.handleSubmit}>
+        <form className={css.loginForm} onSubmit={this.handleSubmit}>
           <input
             placeholder="email"
             name="email"
