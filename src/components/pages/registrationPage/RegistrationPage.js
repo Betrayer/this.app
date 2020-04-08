@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import firebase from "../../config";
+import firebase from "../../../config";
 import { withRouter } from "react-router-dom";
-import css from './registrationPage.module.css'
+import css from "./registrationPage.module.css";
 
-class SignInPage extends Component {
+class RegistrationPage extends Component {
   state = {
     message: null,
     email: "",
-    password: ""
+    password: "",
   };
 
   //   componentDidMount() {
@@ -23,13 +23,13 @@ class SignInPage extends Component {
     }
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
     this.createUser(email, password);
@@ -62,4 +62,4 @@ class SignInPage extends Component {
   }
 }
 
-export default withRouter(SignInPage);
+export default withRouter(RegistrationPage);

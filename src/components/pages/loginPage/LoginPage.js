@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import firebase from "../../config";
+import { connect } from "react-redux";
+import { signIn } from "../../redux/actions";
+import firebase from "../../../config";
 import { withRouter } from "react-router-dom";
 import css from "./loginPage.module.css";
 
@@ -7,7 +9,7 @@ class LoginPage extends Component {
   state = {
     message: null,
     email: "",
-    password: ""
+    password: "",
   };
 
   createUser = async (email, password) => {
@@ -18,17 +20,18 @@ class LoginPage extends Component {
     }
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
     this.createUser(email, password);
     this.props.history.push("/home");
+    this.props.signIn("true");
   };
 
   render() {
@@ -65,4 +68,4 @@ class LoginPage extends Component {
   }
 }
 
-export default withRouter(LoginPage);
+export default connect(null, { signIn })(withRouter(LoginPage));
