@@ -1,0 +1,28 @@
+.todoListWrapper {
+    width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoListWrapper h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.todoList li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoList {
+    width: 400px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}

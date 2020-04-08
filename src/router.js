@@ -1,15 +1,15 @@
 import React, { lazy, Suspense } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import HomePage from "./pages/homePage/HomePage";
-// import TodoList from './todoList/TodoList'
+import { Route, Switch } from "react-router-dom";
+import HomePage from "./components/pages/homePage/HomePage";
+import TodoList from './components/todoList/TodoList'
 
 const LazyLogin = lazy(() =>
-  import("./pages/loginPage/LoginPage" /* webpackChunkName: 'Login' */)
+  import("./components/pages/loginPage/LoginPage" /* webpackChunkName: 'Login' */)
 );
 
 const LazyRegistration = lazy(() =>
   import(
-    "./pages/registrationPage/RegistrationPage" /* webpackChunkName: 'Registration' */
+    "./components/pages/registrationPage/RegistrationPage" /* webpackChunkName: 'Registration' */
   )
 );
 
@@ -18,12 +18,7 @@ export const useRouter = isAuthenticated => {
     return (
       <Switch>
         <Route exact path="/home" component={HomePage} />
-        {/* <Route exact path="/home/todo">
-            <>
-              <TodoList />
-            </>
-          </Route>
-        <Redirect to="/home" /> */}
+        <Route exact path="/home/todo" component={TodoList} />
       </Switch>
     );
   }
@@ -32,9 +27,9 @@ export const useRouter = isAuthenticated => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route path="/login" component={LazyLogin} />
-          <Route path="/registration" component={LazyRegistration} />
-          {/* <Redirect to="/login" /> */}
+          <Route exact path="" component={LazyLogin} />
+          <Route exact path="/this.app" component={LazyLogin} />
+          <Route exact path="/registration" component={LazyRegistration} />
         </Switch>
       </Suspense>
     </>

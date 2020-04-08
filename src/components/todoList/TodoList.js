@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom'
-
+import css from './toDoList.module.css'
+import {Navigation} from '../navigation/Navigation'
 import axios from "axios";
 
 class TodoList extends Component {
@@ -10,7 +11,7 @@ class TodoList extends Component {
   //=====================================================
   async componentDidMount() {
     // axios.post("https://initialproject-b512b.firebaseio.com/todoList.json", {
-    //   wish: "smth"
+    //   todo: "smth"
     // });
     // ===================================================
     this.getInitialData();
@@ -33,15 +34,15 @@ class TodoList extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const value = e.target.elements[0].value;
-    await this.postToDo({ wish: value });
+    await this.postToDo({ todo: value });
     this.getInitialData();
   };
 
-  postToDo = async wish => {
+  postToDo = async todo => {
     try {
       await axios.post(
         "https://initialproject-b512b.firebaseio.com/todoList.json",
-        wish
+        todo
       );
     } catch (er) {
       console.log(er);
@@ -62,23 +63,24 @@ class TodoList extends Component {
     const { todoList } = this.state;
     console.log(todoList);
     return (
-      <>
+      <div className={css.todoListWrapper}>
+        <Navigation />
         <h2>this is todo</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="wish" />
+          <input type="text" name="todo" />
           <button>Post</button>
         </form>
-        <ul>
-          {todoList.map(wish => (
-            <li key={wish.id}>
-              <p>{wish.wish}</p>
-              <button onClick={() => this.deleteToDo(wish.id)}>
+        <ul className={css.todoList}>
+          {todoList.map(todo => (
+            <li key={todo.id}>
+              <p>{todo.todo}</p>
+              <button onClick={() => this.deleteToDo(todo.id)}>
                 Delete
               </button>
             </li>
           ))}
         </ul>
-      </>
+      </div>
     );
   }
 }

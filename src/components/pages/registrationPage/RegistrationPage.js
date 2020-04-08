@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import firebase from "../../config";
+import firebase from "../../../config";
 import { withRouter } from "react-router-dom";
-import css from './registrationPage.module.css'
+import css from "./registrationPage.module.css";
 
 class SignInPage extends Component {
   state = {
