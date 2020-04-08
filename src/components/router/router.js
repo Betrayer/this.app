@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { connect } from "react-redux";
+
 import { Route, Switch } from "react-router-dom";
 
 const LazyLogin = lazy(() =>
@@ -16,9 +16,7 @@ const LazyHome = lazy(() =>
   import("../pages/homePage/HomePage" /* webpackChunkName: 'Home' */)
 );
 
-const authStatus = this.props.isAuthenticated;
-
-const useRouter = authStatus => {
+export const useRouter = (authStatus) => {
   if (authStatus) {
     return (
       <Suspense fallback={<div>Loading...</div>}>
@@ -39,7 +37,3 @@ const useRouter = authStatus => {
     </>
   );
 };
-
-const mapSTP = (state) => ({ isAuthenticated: state.isAuthenticated });
-
-export default connect(mapSTP)(useRouter);
