@@ -1,0 +1,34 @@
+name: betrayer
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: ^0.28.0
+  cupertino_icons: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/bg/bg.jpg
+    - assets/images/flies/015-dead.png
+    - assets/images/flies/016-angry.png
+    - assets/images/flies/037-angry.png
+    - assets/images/flies/050-angry.png
+    - assets/images/flies/046-crazy.png
+    - assets/images/flies/028-poker-face.png
+
+
+
