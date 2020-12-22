@@ -4,7 +4,7 @@ import 'package:betrayer/components/fly.dart';
 import 'package:betrayer/betrayer-game.dart';
 
 class CrazyFly extends Fly {
-  double get speed => game.tileSize * 7;
+  double get speed => game.tileSize * 10;
   CrazyFly(BetrayerGame game, double x, double y) : super(game) {
     flyRect = Rect.fromLTWH(x, y, game.tileSize * 1.65, game.tileSize * 1.65);
     flyingSprite = List();

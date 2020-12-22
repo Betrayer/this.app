@@ -5,7 +5,6 @@ import 'package:flame/sprite.dart';
 class Fly {
   final BetrayerGame game;
   Rect flyRect;
-  // Paint flyPaint;
   bool isDead = false;
   bool isOffScreen = false;
   List<Sprite> flyingSprite;
@@ -16,12 +15,6 @@ class Fly {
   Fly(this.game) {
     setTargetLocation();
   }
-
-  // Fly(this.game, double x, double y) {
-  //   flyRect = Rect.fromLTWH(x, y, game.tileSize, game.tileSize);
-  //   // flyPaint = Paint();
-  //   // flyPaint.color = Color(0xff6ab04c);
-  // }
 
   double get speed => game.tileSize * 3;
 
@@ -34,7 +27,6 @@ class Fly {
   }
 
   void render(Canvas c) {
-    // c.drawRect(flyRect, flyPaint);
     if (isDead) {
       deadSprite.renderRect(c, flyRect.inflate(2));
     } else {
@@ -69,7 +61,7 @@ class Fly {
 
   void onTapDown() {
     isDead = true;
-    // flyPaint.color = Color(0xffff4757);
-    game.spawnFly();
+    // game.spawnFly();
+    print('harder daddy');
   }
 }

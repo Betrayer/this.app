@@ -21,6 +21,13 @@ void main() {
     'flies/050-angry.png',
     'flies/046-crazy.png',
     'flies/028-poker-face.png',
+    'menu/f.jpg',
+    'menu/goal.jpg',
+    'menu/handshake.png',
+    'menu/henlo-human.jpg',
+    'menu/imade.jpg',
+    'menu/information.png',
+    'menu/start.png',
   ]);
 
   TapGestureRecognizer tapper = TapGestureRecognizer();
