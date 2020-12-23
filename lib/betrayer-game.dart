@@ -14,6 +14,11 @@ import 'package:betrayer/views/home-view.dart';
 import 'package:betrayer/components/start-button.dart';
 import 'package:betrayer/views/lost-view.dart';
 import 'package:betrayer/controllers/spawner.dart';
+import 'package:betrayer/components/credits-button.dart';
+import 'package:betrayer/components/help-button.dart';
+import 'package:betrayer/views/help-view.dart';
+import 'package:betrayer/views/credits-view.dart';
+import 'package:betrayer/components/score-display.dart';
 
 class BetrayerGame extends Game {
   Size screenSize;
@@ -26,6 +31,12 @@ class BetrayerGame extends Game {
   StartButton startButton;
   LostView lostView;
   FlySpawner spawner;
+  HelpButton helpButton;
+  CreditsButton creditsButton;
+  HelpView helpView;
+  CreditsView creditsView;
+  int score;
+  ScoreDisplay scoreDisplay;
 
   BetrayerGame() {
     initialize();
@@ -35,12 +46,18 @@ class BetrayerGame extends Game {
     flies = List<Fly>();
     resize(await Flame.util.initialDimensions());
     rnd = Random();
+    score = 0;
 
     background = Backyard(this);
     homeView = HomeView(this);
     startButton = StartButton(this);
     lostView = LostView(this);
     spawner = FlySpawner(this);
+    helpButton = HelpButton(this);
+    creditsButton = CreditsButton(this);
+    helpView = HelpView(this);
+    creditsView = CreditsView(this);
+    scoreDisplay = ScoreDisplay(this);
     // spawnFly();
   }
 
@@ -71,16 +88,22 @@ class BetrayerGame extends Game {
     background.render(canvas);
     flies.forEach((Fly fly) => fly.render(canvas));
     flies.removeWhere((Fly fly) => fly.isOffScreen);
+    if (activeView == View.playing) scoreDisplay.render(canvas);
     if (activeView == View.home) homeView.render(canvas);
     if (activeView == View.home || activeView == View.lost) {
+      helpButton.render(canvas);
+      creditsButton.render(canvas);
       startButton.render(canvas);
     }
+    if (activeView == View.help) helpView.render(canvas);
+    if (activeView == View.credits) creditsView.render(canvas);
     if (activeView == View.lost) lostView.render(canvas);
   }
 
   void update(double t) {
     spawner.update(t);
     flies.forEach((Fly fly) => fly.update(t));
+    if (activeView == View.playing) scoreDisplay.update(t);
   }
 
   void resize(Size size) {
@@ -90,6 +113,13 @@ class BetrayerGame extends Game {
 
   void onTapDown(TapDownDetails d) {
     bool isHandled = false;
+
+    if (!isHandled) {
+      if (activeView == View.help || activeView == View.credits) {
+        activeView = View.home;
+        isHandled = true;
+      }
+    }
 
     if (!isHandled && startButton.rect.contains(d.globalPosition)) {
       if (activeView == View.home || activeView == View.lost) {
@@ -109,6 +139,20 @@ class BetrayerGame extends Game {
       });
       if (activeView == View.playing && !didHitAFly) {
         activeView = View.lost;
+      }
+    }
+
+    if (!isHandled && helpButton.rect.contains(d.globalPosition)) {
+      if (activeView == View.home || activeView == View.lost) {
+        helpButton.onTapDown();
+        isHandled = true;
+      }
+    }
+
+    if (!isHandled && creditsButton.rect.contains(d.globalPosition)) {
+      if (activeView == View.home || activeView == View.lost) {
+        creditsButton.onTapDown();
+        isHandled = true;
       }
     }
 

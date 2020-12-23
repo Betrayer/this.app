@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:betrayer/betrayer-game.dart';
 import 'package:flame/sprite.dart';
+import 'package:betrayer/view.dart';
 
 class Fly {
   final BetrayerGame game;
@@ -60,8 +61,14 @@ class Fly {
   }
 
   void onTapDown() {
-    isDead = true;
-    // game.spawnFly();
-    print('harder daddy');
+    if (!isDead) {
+      isDead = true;
+
+      if (game.activeView == View.playing) {
+        game.score += 1;
+      }
+    }
+    // isDead = true;
+    // // game.spawnFly();
   }
 }
