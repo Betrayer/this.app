@@ -28,6 +28,7 @@ void main() {
     'menu/imade.jpg',
     'menu/information.png',
     'menu/start.png',
+    'menu/speech-bubble.png',
   ]);
 
   TapGestureRecognizer tapper = TapGestureRecognizer();

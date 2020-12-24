@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:betrayer/betrayer-game.dart';
 import 'package:flame/sprite.dart';
 import 'package:betrayer/view.dart';
+import 'package:betrayer/components/callout.dart';
 
 class Fly {
   final BetrayerGame game;
@@ -12,9 +13,11 @@ class Fly {
   Sprite deadSprite;
   double flyingSpriteIndex = 0;
   Offset targetLocation;
+  Callout callout;
 
   Fly(this.game) {
     setTargetLocation();
+    callout = Callout(this);
   }
 
   double get speed => game.tileSize * 3;
@@ -33,6 +36,9 @@ class Fly {
     } else {
       flyingSprite[flyingSpriteIndex.toInt()].renderRect(c, flyRect.inflate(2));
     }
+    if (game.activeView == View.playing) {
+      callout.render(c);
+    }
   }
 
   void update(double t) {
@@ -43,6 +49,7 @@ class Fly {
       }
     } else {
       flyingSpriteIndex += 30 * t;
+      callout.update(t);
       if (flyingSpriteIndex >= 2) {
         flyingSpriteIndex -= 2;
       }
