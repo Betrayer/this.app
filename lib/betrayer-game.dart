@@ -1,10 +1,13 @@
+// ЛИБЫ
 import 'dart:ui';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flame/game.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
-import 'components/fly.dart';
 import 'dart:math';
 import 'package:flutter/gestures.dart';
+// КОМПОНЕНТЫ
+import 'components/fly.dart';
 import 'components/backyard.dart';
 import 'components/house-fly.dart';
 import 'components/angry-fly.dart';
@@ -19,6 +22,7 @@ import 'package:betrayer/components/help-button.dart';
 import 'package:betrayer/views/help-view.dart';
 import 'package:betrayer/views/credits-view.dart';
 import 'package:betrayer/components/score-display.dart';
+import 'package:betrayer/components/highscore-display.dart';
 
 class BetrayerGame extends Game {
   Size screenSize;
@@ -37,8 +41,10 @@ class BetrayerGame extends Game {
   CreditsView creditsView;
   int score;
   ScoreDisplay scoreDisplay;
+  final SharedPreferences storage; // UNSURE
+  HighscoreDisplay highscoreDisplay;
 
-  BetrayerGame() {
+  BetrayerGame(this.storage) {
     initialize();
   }
 
@@ -58,6 +64,7 @@ class BetrayerGame extends Game {
     helpView = HelpView(this);
     creditsView = CreditsView(this);
     scoreDisplay = ScoreDisplay(this);
+    highscoreDisplay = HighscoreDisplay(this);
     // spawnFly();
   }
 
@@ -88,6 +95,7 @@ class BetrayerGame extends Game {
     background.render(canvas);
     flies.forEach((Fly fly) => fly.render(canvas));
     flies.removeWhere((Fly fly) => fly.isOffScreen);
+    highscoreDisplay.render(canvas);
     if (activeView == View.playing) scoreDisplay.render(canvas);
     if (activeView == View.home) homeView.render(canvas);
     if (activeView == View.home || activeView == View.lost) {

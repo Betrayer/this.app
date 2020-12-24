@@ -4,10 +4,14 @@ import 'package:flutter/services.dart';
 import 'package:betrayer/betrayer-game.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flame/flame.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  BetrayerGame game = BetrayerGame();
+  SharedPreferences storage = await SharedPreferences.getInstance();
+  BetrayerGame game = BetrayerGame(storage);
   runApp(game.widget);
+
+
 
   Util flameUtil = Util();
   flameUtil.fullScreen();
