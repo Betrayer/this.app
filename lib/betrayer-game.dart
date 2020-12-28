@@ -23,6 +23,8 @@ import 'package:betrayer/views/help-view.dart';
 import 'package:betrayer/views/credits-view.dart';
 import 'package:betrayer/components/score-display.dart';
 import 'package:betrayer/components/highscore-display.dart';
+// DEV
+// import 'achievement-counters/total-taps.dart';
 
 class BetrayerGame extends Game {
   Size screenSize;
@@ -43,6 +45,8 @@ class BetrayerGame extends Game {
   ScoreDisplay scoreDisplay;
   final SharedPreferences storage; // UNSURE
   HighscoreDisplay highscoreDisplay;
+  // DEV
+  // TotalTaps totalTaps;
 
   BetrayerGame(this.storage) {
     initialize();
@@ -53,6 +57,8 @@ class BetrayerGame extends Game {
     resize(await Flame.util.initialDimensions());
     rnd = Random();
     score = 0;
+    // DEV
+    // totalTaps = 0;
 
     background = Backyard(this);
     homeView = HomeView(this);
@@ -65,6 +71,8 @@ class BetrayerGame extends Game {
     creditsView = CreditsView(this);
     scoreDisplay = ScoreDisplay(this);
     highscoreDisplay = HighscoreDisplay(this);
+    // DEV
+    // totalTaps = TotalTaps(this);
     // spawnFly();
   }
 
@@ -143,10 +151,12 @@ class BetrayerGame extends Game {
           fly.onTapDown();
           isHandled = true;
           didHitAFly = true;
+          // totalTaps.updateTotalTaps(); // DEV
         }
       });
       if (activeView == View.playing && !didHitAFly) {
         activeView = View.lost;
+        // totalTaps.updateTotalTaps(); // DEV
       }
     }
 
