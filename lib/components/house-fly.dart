@@ -6,7 +6,7 @@ import 'package:betrayer/betrayer-game.dart';
 class HouseFly extends Fly {
   double get speed => game.tileSize * 5;
   HouseFly(BetrayerGame game, double x, double y) : super(game) {
-    flyRect = Rect.fromLTWH(x, y, game.tileSize * 1.5, game.tileSize * 1.5);
+    flyRect = Rect.fromLTWH(x, y, game.tileSize * 1, game.tileSize * 1);
     flyingSprite = List<Sprite>();
     // INITIAL FLIES
     // flyingSprite.add(Sprite('flies/028-poker-face.png'));
@@ -23,7 +23,7 @@ class HouseFly extends Fly {
     flyingSprite.add(Sprite('flies/fly_8.png'));
     flyingSprite.add(Sprite('flies/fly_9.png'));
     flyingSprite.add(Sprite('flies/fly_10.png'));
-    flyingSprite.add(Sprite('flies/fly_11.png'));
+    // flyingSprite.add(Sprite('flies/fly_11.png'));
     // flyingSprite.add(Sprite('flies/fly_12.png'));
     // flyingSprite.add(Sprite('flies/fly_13.png'));
     // flyingSprite.add(Sprite('flies/fly_14.png'));

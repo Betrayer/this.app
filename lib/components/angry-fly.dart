@@ -6,7 +6,7 @@ import 'package:betrayer/betrayer-game.dart';
 class AngryFly extends Fly {
   double get speed => game.tileSize * 7;
   AngryFly(BetrayerGame game, double x, double y) : super(game) {
-    flyRect = Rect.fromLTWH(x, y, game.tileSize * 2.025, game.tileSize * 2.025);
+    flyRect = Rect.fromLTWH(x, y, game.tileSize * 1.3, game.tileSize * 1.3);
     flyingSprite = List();
     flyingSprite.add(Sprite('flies/050-angry.png'));
     flyingSprite.add(Sprite('flies/037-angry.png'));

@@ -31,14 +31,31 @@ class Fly {
   }
 
   void render(Canvas c) {
+    // I MESSED UP HERE, BUT CODE ISN'T DEAD
+    // if (isDead) {
+    //   deadSprite.renderRect(c, flyRect.inflate(2));
+    // } else {
+    //   flyingSprite[flyingSpriteIndex.toInt()].renderRect(c, flyRect.inflate(2));
+    // }
+    // if (game.activeView == View.playing) {
+    //   callout.render(c);
+    // }
+
+    // RESIZING
+    // c.drawRect(
+    // flyRect.inflate(flyRect.width / 2), Paint()..color = Color(0x77ffffff));
+
     if (isDead) {
-      deadSprite.renderRect(c, flyRect.inflate(2));
+      deadSprite.renderRect(c, flyRect.inflate(flyRect.width / 2));
     } else {
-      flyingSprite[flyingSpriteIndex.toInt()].renderRect(c, flyRect.inflate(2));
+      flyingSprite[flyingSpriteIndex.toInt()]
+          .renderRect(c, flyRect.inflate(flyRect.width / 2));
+      if (game.activeView == View.playing) {
+        callout.render(c);
+      }
     }
-    if (game.activeView == View.playing) {
-      callout.render(c);
-    }
+
+    // c.drawRect(flyRect, Paint()..color = Color(0x88000000));
   }
 
   void update(double t) {
@@ -50,7 +67,8 @@ class Fly {
     } else {
       flyingSpriteIndex += 30 * t;
       callout.update(t);
-      if (flyingSpriteIndex >= 2) {
+      // if (flyingSpriteIndex >= 2) { // LEADS TO OVERLAP, NYEEEH
+      while (flyingSpriteIndex >= 2) {
         flyingSpriteIndex -= 2;
       }
 
