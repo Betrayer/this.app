@@ -52,6 +52,14 @@ void main() async {
     'menu/speech-bubble.png',
   ]);
 
+  Flame.audio.disableLog();
+  Flame.audio.loadAll(<String>[
+    'sfx/ouch_1.mp3',
+    'sfx/ouch_2.mp3',
+    'sfx/ha_ha_1.mp3',
+    'sfx/ha_ha_2.mp3',
+  ]);
+
   BetrayerGame game = BetrayerGame(storage);
   runApp(game.widget);
 

@@ -58,6 +58,12 @@ flutter:
     - assets/images/menu/information.png
     - assets/images/menu/start.png
     - assets/images/menu/speech-bubble.png
+    - assets/audio/sfx/ouch_1.mp3
+    - assets/audio/sfx/ouch_2.mp3
+    - assets/audio/sfx/ha_ha_1.mp3
+    - assets/audio/sfx/ha_ha_2.mp3
+
+
 
 
 

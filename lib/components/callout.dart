@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:betrayer/view.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/painting.dart';
+import 'package:flame/flame.dart';
 import 'package:betrayer/components/fly.dart';
 
 class Callout {
@@ -36,6 +37,8 @@ class Callout {
     if (fly.game.activeView == View.playing) {
       value = value - .2 * t;
       if (value <= 0) {
+        Flame.audio.play(
+            'sfx/ha_ha_' + (fly.game.rnd.nextInt(2) + 1).toString() + '.mp3');
         fly.game.activeView = View.lost;
       }
     }

@@ -47,6 +47,7 @@ class BetrayerGame extends Game {
   HighscoreDisplay highscoreDisplay;
   // DEV
   // TotalTaps totalTaps;
+  int totalScore;
 
   BetrayerGame(this.storage) {
     initialize();
@@ -57,6 +58,10 @@ class BetrayerGame extends Game {
     resize(await Flame.util.initialDimensions());
     rnd = Random();
     score = 0;
+    totalScore = storage.getInt('totalScore') ?? 0;
+    print(totalScore);
+    // storage.setInt('totalScore', 0);
+    // print(storage.getInt('totalScore'));
     // DEV
     // totalTaps = 0;
 
@@ -128,6 +133,7 @@ class BetrayerGame extends Game {
   }
 
   void onTapDown(TapDownDetails d) {
+    print(totalScore);
     bool isHandled = false;
 
     if (!isHandled) {
@@ -155,6 +161,7 @@ class BetrayerGame extends Game {
         }
       });
       if (activeView == View.playing && !didHitAFly) {
+        Flame.audio.play('sfx/ha_ha_' + (rnd.nextInt(2) + 1).toString() + '.mp3');
         activeView = View.lost;
         // totalTaps.updateTotalTaps(); // DEV
       }

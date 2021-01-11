@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:betrayer/betrayer-game.dart';
 import 'package:flame/sprite.dart';
+import 'package:flame/flame.dart';
 import 'package:betrayer/view.dart';
 import 'package:betrayer/components/callout.dart';
 
@@ -86,11 +87,16 @@ class Fly {
   }
 
   void onTapDown() {
+    Flame.audio.play('sfx/ouch_' + (game.rnd.nextInt(2) + 1).toString() + '.mp3');
+    // Flame.audio.play('sfx/ouch_1.mp3');
+
     if (!isDead) {
       isDead = true;
 
       if (game.activeView == View.playing) {
         game.score += 1;
+        game.totalScore += 1;
+        game.storage.setInt('totalScore', game.totalScore) ?? 0;
       }
       if (game.score > (game.storage.getInt('highscore') ?? 0)) {
         game.storage.setInt('highscore', game.score);
