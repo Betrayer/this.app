@@ -87,7 +87,10 @@ class Fly {
   }
 
   void onTapDown() {
-    Flame.audio.play('sfx/ouch_' + (game.rnd.nextInt(2) + 1).toString() + '.mp3');
+    if (game.soundButton.isEnabled) {
+      Flame.audio
+          .play('sfx/ouch_' + (game.rnd.nextInt(2) + 1).toString() + '.mp3');
+    }
     // Flame.audio.play('sfx/ouch_1.mp3');
 
     if (!isDead) {

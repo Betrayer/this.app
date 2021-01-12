@@ -1,7 +1,7 @@
 name: betrayer
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -20,7 +20,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
   assets:
     - assets/images/bg/bg.jpg
@@ -50,6 +49,9 @@ flutter:
     - assets/images/flies/fly_18.png
     - assets/images/flies/fly_19.png
     - assets/images/flies/fly_20.png
+    # - assets/images/flies/zombie_1.png
+    # - assets/images/flies/zombie_2.png
+    # - assets/images/flies/zombie_3.png
     - assets/images/menu/f.jpg
     - assets/images/menu/goal.jpg
     - assets/images/menu/handshake.png
@@ -58,15 +60,14 @@ flutter:
     - assets/images/menu/information.png
     - assets/images/menu/start.png
     - assets/images/menu/speech-bubble.png
+    - assets/images/menu/music.png
+    - assets/images/menu/music_off.png
+    - assets/images/menu/volume.png
+    - assets/images/menu/mute.png
+    # sounds
     - assets/audio/sfx/ouch_1.mp3
     - assets/audio/sfx/ouch_2.mp3
     - assets/audio/sfx/ha_ha_1.mp3
     - assets/audio/sfx/ha_ha_2.mp3
-
-
-
-
-
-
-
-
+    - assets/audio/bgm/background.mp3
+    - assets/audio/bgm/home.mp3

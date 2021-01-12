@@ -1,7 +1,6 @@
 // import 'package:betrayer/betrayer-game.dart';
 // import 'package:betrayer/view.dart';
 
-
 // class TotalTaps {
 //   final BetrayerGame game;
 
@@ -22,3 +21,19 @@
 //     print(totalTaps);
 //   }
 // }
+
+import 'package:betrayer/betrayer-game.dart';
+// import 'dart:ui';
+// import 'package:flutter/material.dart';
+
+class TotalTaps {
+  final BetrayerGame game;
+
+  TotalTaps(this.game) {
+    taps();
+  }
+
+  void taps() {
+    print("ten");
+  }
+}

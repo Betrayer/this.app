@@ -42,6 +42,9 @@ void main() async {
     'flies/fly_18.png',
     'flies/fly_19.png',
     'flies/fly_20.png',
+    // 'flies/zombie_1.png',
+    // 'flies/zombie_2.png',
+    // 'flies/zombie_3.png',
     'menu/f.jpg',
     'menu/goal.jpg',
     'menu/handshake.png',
@@ -50,6 +53,10 @@ void main() async {
     'menu/information.png',
     'menu/start.png',
     'menu/speech-bubble.png',
+    'menu/music.png',
+    'menu/volume.png',
+    'menu/music_off.png',
+    'menu/volume.png',
   ]);
 
   Flame.audio.disableLog();
@@ -58,6 +65,8 @@ void main() async {
     'sfx/ouch_2.mp3',
     'sfx/ha_ha_1.mp3',
     'sfx/ha_ha_2.mp3',
+    'bgm/home.mp3',
+    'bgm/background.mp3',
   ]);
 
   BetrayerGame game = BetrayerGame(storage);

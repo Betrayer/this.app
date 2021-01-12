@@ -6,6 +6,7 @@ import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter/gestures.dart';
+import 'package:audioplayers/audioplayers.dart';
 // КОМПОНЕНТЫ
 import 'components/fly.dart';
 import 'components/backyard.dart';
@@ -23,8 +24,10 @@ import 'package:betrayer/views/help-view.dart';
 import 'package:betrayer/views/credits-view.dart';
 import 'package:betrayer/components/score-display.dart';
 import 'package:betrayer/components/highscore-display.dart';
+import 'package:betrayer/components/music-button.dart';
+import 'package:betrayer/components/sound-button.dart';
 // DEV
-// import 'achievement-counters/total-taps.dart';
+import 'achievement-counters/total-taps.dart';
 
 class BetrayerGame extends Game {
   Size screenSize;
@@ -45,8 +48,12 @@ class BetrayerGame extends Game {
   ScoreDisplay scoreDisplay;
   final SharedPreferences storage; // UNSURE
   HighscoreDisplay highscoreDisplay;
+  AudioPlayer homeBGM; // SOUND
+  AudioPlayer backgroundBGM; // SOUND
+  MusicButton musicButton;
+  SoundButton soundButton;
   // DEV
-  // TotalTaps totalTaps;
+  TotalTaps totalTaps;
   int totalScore;
 
   BetrayerGame(this.storage) {
@@ -76,9 +83,31 @@ class BetrayerGame extends Game {
     creditsView = CreditsView(this);
     scoreDisplay = ScoreDisplay(this);
     highscoreDisplay = HighscoreDisplay(this);
+    musicButton = MusicButton(this);
+    soundButton = SoundButton(this);
     // DEV
-    // totalTaps = TotalTaps(this);
+    totalTaps = TotalTaps(this);
     // spawnFly();
+
+    homeBGM = await Flame.audio.loopLongAudio('bgm/home.mp3', volume: .25);
+    homeBGM.pause();
+    backgroundBGM =
+        await Flame.audio.loopLongAudio('bgm/background.mp3', volume: .25);
+    backgroundBGM.pause();
+
+    playHomeBGM();
+  }
+
+  void playHomeBGM() {
+    backgroundBGM.pause();
+    backgroundBGM.seek(Duration.zero);
+    homeBGM.resume();
+  }
+
+  void playPlayingBGM() {
+    homeBGM.pause();
+    homeBGM.seek(Duration.zero);
+    backgroundBGM.resume();
   }
 
   void spawnFly() {
@@ -109,6 +138,8 @@ class BetrayerGame extends Game {
     flies.forEach((Fly fly) => fly.render(canvas));
     flies.removeWhere((Fly fly) => fly.isOffScreen);
     highscoreDisplay.render(canvas);
+    musicButton.render(canvas);
+    soundButton.render(canvas);
     if (activeView == View.playing) scoreDisplay.render(canvas);
     if (activeView == View.home) homeView.render(canvas);
     if (activeView == View.home || activeView == View.lost) {
@@ -136,6 +167,10 @@ class BetrayerGame extends Game {
     print(totalScore);
     bool isHandled = false;
 
+    if (totalScore == 3) {
+      totalTaps.taps();
+    }
+
     if (!isHandled) {
       if (activeView == View.help || activeView == View.credits) {
         activeView = View.home;
@@ -161,7 +196,11 @@ class BetrayerGame extends Game {
         }
       });
       if (activeView == View.playing && !didHitAFly) {
-        Flame.audio.play('sfx/ha_ha_' + (rnd.nextInt(2) + 1).toString() + '.mp3');
+        if (soundButton.isEnabled) {
+          Flame.audio
+              .play('sfx/ha_ha_' + (rnd.nextInt(2) + 1).toString() + '.mp3');
+        }
+        playHomeBGM();
         activeView = View.lost;
         // totalTaps.updateTotalTaps(); // DEV
       }
@@ -179,6 +218,18 @@ class BetrayerGame extends Game {
         creditsButton.onTapDown();
         isHandled = true;
       }
+    }
+
+    // MUSCI
+    if (!isHandled && musicButton.rect.contains(d.globalPosition)) {
+      musicButton.onTapDown();
+      isHandled = true;
+    }
+
+    // SOUND
+    if (!isHandled && soundButton.rect.contains(d.globalPosition)) {
+      soundButton.onTapDown();
+      isHandled = true;
     }
 
     // flies.forEach((Fly fly) {

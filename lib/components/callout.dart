@@ -37,8 +37,11 @@ class Callout {
     if (fly.game.activeView == View.playing) {
       value = value - .2 * t;
       if (value <= 0) {
-        Flame.audio.play(
-            'sfx/ha_ha_' + (fly.game.rnd.nextInt(2) + 1).toString() + '.mp3');
+        if (fly.game.soundButton.isEnabled) {
+          Flame.audio.play(
+              'sfx/ha_ha_' + (fly.game.rnd.nextInt(2) + 1).toString() + '.mp3');
+        }
+        fly.game.playHomeBGM();
         fly.game.activeView = View.lost;
       }
     }

@@ -10,6 +10,9 @@ class CrazyFly extends Fly {
     flyingSprite = List();
     flyingSprite.add(Sprite('flies/016-angry.png'));
     flyingSprite.add(Sprite('flies/046-crazy.png'));
+    // flyingSprite.add(Sprite('flies/zombie_1.png'));
+    // flyingSprite.add(Sprite('flies/zombie_2.png'));
+    // flyingSprite.add(Sprite('flies/zombie_3.png'));
     deadSprite = Sprite('flies/015-dead.png');
   }
 }
