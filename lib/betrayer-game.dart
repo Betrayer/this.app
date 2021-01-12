@@ -163,13 +163,17 @@ class BetrayerGame extends Game {
     tileSize = screenSize.width / 9;
   }
 
+  void clickAchievement() {
+    if (totalScore == 3) {
+      totalTaps.threeTaps();
+    }
+  }
+
   void onTapDown(TapDownDetails d) {
     print(totalScore);
     bool isHandled = false;
 
-    if (totalScore == 3) {
-      totalTaps.taps();
-    }
+    clickAchievement();
 
     if (!isHandled) {
       if (activeView == View.help || activeView == View.credits) {

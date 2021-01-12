@@ -23,17 +23,20 @@
 // }
 
 import 'package:betrayer/betrayer-game.dart';
-// import 'dart:ui';
-// import 'package:flutter/material.dart';
+import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class TotalTaps {
   final BetrayerGame game;
 
+final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
+
+
   TotalTaps(this.game) {
-    taps();
+    threeTaps();
   }
 
-  void taps() {
-    print("ten");
+  void threeTaps() {
+    print("sup");
   }
 }
