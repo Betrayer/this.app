@@ -14,6 +14,8 @@ dependencies:
   flame: ^0.28.0
   cupertino_icons: ^1.0.1
   shared_preferences: ^0.5.12+4
+  #DEV
+  play_games: ^0.5.5
 
 dev_dependencies:
   flutter_test:
