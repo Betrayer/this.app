@@ -67,7 +67,6 @@ class BetrayerGame extends Game {
     rnd = Random();
     score = 0;
     totalScore = storage.getInt('totalScore') ?? 0;
-    print(totalScore);
     // storage.setInt('totalScore', 0);
     // print(storage.getInt('totalScore'));
     // DEV
