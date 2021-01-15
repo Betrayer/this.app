@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "945916512498",
+    "project_id": "toigame",
+    "storage_bucket": "toigame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945916512498:android:4dfa6ccee31cae256ba86b",
+        "android_client_info": {
+          "package_name": "com.toi.betrayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945916512498-7ildjrl26to2vfs3ku7ck5vjt5oushlm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_8TvPig-g6mpH-jrIzJBVVvXM8q2m-c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945916512498-7ildjrl26to2vfs3ku7ck5vjt5oushlm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

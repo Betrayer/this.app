@@ -28,7 +28,7 @@ import 'package:betrayer/components/music-button.dart';
 import 'package:betrayer/components/sound-button.dart';
 // DEV
 import 'achievement-counters/total-taps.dart';
-import 'package:play_games/play_games.dart';
+// import 'package:play_games/play_games.dart';
 
 class BetrayerGame extends Game {
   Size screenSize;
@@ -74,10 +74,10 @@ class BetrayerGame extends Game {
 
     // UNSURE =-=-=-==-
 
-    SigninResult result = await PlayGames.signIn();
-    if (result.success) {
-      await PlayGames.setPopupOptions();
-    }
+    // SigninResult result = await PlayGames.signIn();
+    // if (result.success) {
+    //   await PlayGames.setPopupOptions();
+    // }
 
     // =-=-=-=-==-=-=-=-
 
